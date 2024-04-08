@@ -38,5 +38,11 @@ var twod = {
 
   show: function (twod) {
     $("img.twod").attr("src", "data:image/pnjpegg;base64," + twod.src);
+    frame.people.forEach(person => {
+            if (person.x_pos < 0) {
+                // Print "hello" or trigger any desired action
+                console.log("hello");
+            }
+        });
   },
 };
