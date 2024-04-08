@@ -1,6 +1,8 @@
 // var socket = new WebSocket("ws://cpsc484-01.stdusr.yale.internal:8888/frames");
 
 var host = "cpsc484-01.stdusr.yale.internal:8888";
+var course_1 = 0; // this will keep track of first course OH demand
+var course_1 = 0; // this will keep track of second course OH demand
 
 $(document).ready(function () {
   frames.start();
@@ -40,8 +42,11 @@ var twod = {
     $("img.twod").attr("src", "data:image/pnjpegg;base64," + twod.src);
     frame.people.forEach(person => {
             if (person.x_pos < 0) {
-                // Print "hello" or trigger any desired action
-                console.log("hello");
+                console.log("left");
+                course_1++; // increment course_1 counter if motion detected on the left side
+            } else {
+                console.log("right");
+                course_2++; // increment course_2 counter if motion detected on the right side
             }
         });
   },
