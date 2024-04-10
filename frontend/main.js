@@ -29,35 +29,32 @@ const frames = {
 
         setTimeout(function () {
             that.socket.onmessage = function (event) {
-                frames.show(JSON.parse(event.data));
+                frame = JSON.parse(event.data);
+                if (frame.people[0]) {
+                    // Determine if the person is on the left or right side of the screen
+                    const userPos = frame.people[0]['x_pos'];
+                    if (userPos < 0) {
+                        console.log("Person is on the LEFT side of the screen.");
+                        course_1_demand++;
+                    } else {
+                        console.log("Person is on the RIGHT side of the screen.");
+                        course_2_demand++;
+                    }
+                }
                 console.log("Course 1 demand:", course_1_demand);
-                console.log("Course 2 demand:", course_1_demand);
+                console.log("Course 2 demand:", course_2_demand);
+                // Stop running after processing the message
+                that.stop();
             };
 
         }, 5000); // Delay execution for 5 seconds
     },
 
-    // Function to handle frame data
-    show: function (frame) {
-        //console.log('Frame:', frame);
-
-        // Check if the person is detected in the frame
-        if (frame.people[0]) {
-            //console.log('Body ID:', frame.people[0]['body_id']);
-
-            // Determine if the person is on the left or right side of the screen
-            const userPos = frame.people[0]['x_pos'];
-            if (userPos < 0) {
-                console.log("Person is on the LEFT side of the screen.");
-                course_1_demand++;
-            } else {
-                console.log("Person is on the RIGHT side of the screen.");
-                course_2_demand++;
-            }
-        }
-    },
+    // Stop running WebSocket connection
+    stop: function () {
+        this.socket.close();
+    }
 };
-
 
 // Object for handling two-dimensional images and video updates
 const twod = {
@@ -75,8 +72,5 @@ const twod = {
     // Function to display two-dimensional data
     show: function (twod) {
         $("img.twod").attr("src", "data:image/pnjpegg;base64," + twod.src);
-
-    },
-
-
+    }
 };
