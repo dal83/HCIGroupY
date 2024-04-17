@@ -36,9 +36,11 @@ const frames = {
                     if (userPos < 0) {
                         console.log("Person is on the LEFT side of the screen.");
                         course_1_demand++;
+                        that.redirectToPage1();
                     } else {
                         console.log("Person is on the RIGHT side of the screen.");
                         course_2_demand++;
+                        that.redirectToPage2();
                     }
                 }
                 console.log("Course 1 demand:", course_1_demand);
@@ -53,7 +55,18 @@ const frames = {
     // Stop running WebSocket connection
     stop: function () {
         this.socket.close();
+    },
+
+    // Function to redirect to the second page
+    redirectToPage2: function () {
+        window.location.href = "page2.html";
+    },
+
+    redirectToPage1: function () {
+        window.location.href = "page1.html";
     }
+
+
 };
 
 // Object for handling two-dimensional images and video updates
