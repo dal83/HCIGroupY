@@ -4,13 +4,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CPSC 223 Selected</title>
+  <title>Selected Course</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
   <div class="selection-container">
-    <div class="selected-course-header">You have selected CPSC 223</div>
+    <div class="selected-course-header" id="selected-course-header">You have selected&nbsp;<span
+        id="chosen-course"></span>
+    </div>
     <div class="course-info">
       18 students have gone to this OH in the last hour
     </div>
@@ -19,11 +21,19 @@
       <span class="time-estimate">45 minutes</span>
     </div>
     <div class="return-instruction">
-      To return to the main menu immediately, walk outside of the scope of the
-      camera.
+      To return to the main menu immediately, walk outside of the scope of the camera.
     </div>
     <div class="number-circle">5</div>
   </div>
+
+  <script>
+    // Extract the chosen_course value from the URL query parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const chosen_course = urlParams.get('course') || ""; // Set default value if query parameter is not present
+
+    // Update the content of the chosen-course element with the chosen course value
+    document.getElementById('chosen-course').textContent = chosen_course;
+  </script>
 </body>
 
 </html>
