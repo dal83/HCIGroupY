@@ -5,6 +5,8 @@ const host = "cpsc484-01.stdusr.yale.internal:8888";
 let course_1_demand = 0;
 let course_2_demand = 0;
 
+let chosen_course = "aaa";
+
 // Function to initialize WebSocket connections and start listening for messages
 $(document).ready(function () {
 
@@ -36,13 +38,17 @@ const frames = {
                     if (userPos < 0) {
                         console.log("Person is on the LEFT side of the screen.");
                         course_1_demand++;
-                        that.redirectToPage1();
+                        chosen_course = "CPSC 223";
+
+                        that.redirectToPage2();
                     } else {
                         console.log("Person is on the RIGHT side of the screen.");
                         course_2_demand++;
+                        chosen_course = "CPSC 484";
                         that.redirectToPage2();
                     }
                 }
+                // Return to home page if no choice selected (i.e. no motion detected on either side of screen)
                 else {
                     window.location.href = "index.html";
                 }
@@ -60,14 +66,10 @@ const frames = {
         this.socket.close();
     },
 
-    // Function to redirect to the second page
     redirectToPage2: function () {
-        window.location.href = "page2.html";
+        // Redirect to page2.html with chosen_course as a query parameter
+        window.location.href = "page2.html?course=" + encodeURIComponent(chosen_course);
     },
-
-    redirectToPage1: function () {
-        window.location.href = "page2.html";
-    }
 
 
 };
