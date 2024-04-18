@@ -27,27 +27,16 @@ const frames = {
         this.socket = new WebSocket(url);
         const that = this; // Store reference to 'this' to use inside setTimeout
 
-        setTimeout(function () {
-            that.socket.onmessage = function (event) {
+            this.socket.onmessage = function (event) {
                 frame = JSON.parse(event.data);
+
+                console.log(frame.people)
                 if (frame.people[0]) {
                     // Determine if the person is on the left or right side of the screen
-                    const userPos = frame.people[0]['x_pos'];
-                    if (userPos < 0) {
-                        console.log("Person is on the LEFT side of the screen.");
-                        course_1_demand++;
-                    } else {
-                        console.log("Person is on the RIGHT side of the screen.");
-                        course_2_demand++;
-                    }
+                    window.location.href = "page1.html";
                 }
-                console.log("Course 1 demand:", course_1_demand);
-                console.log("Course 2 demand:", course_2_demand);
-                // Stop running after processing the message
-                that.stop();
-            };
 
-        }, 5000); // Delay execution for 5 seconds
+            };
     },
 
     // Stop running WebSocket connection

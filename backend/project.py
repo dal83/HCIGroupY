@@ -1,6 +1,8 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for,jsonify
+from flask_cors import CORS 
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def index():
@@ -12,7 +14,12 @@ def welcome():
 
 @app.route('/page1')
 def page1():
-    return render_template('page1.html')
+    # fake data to the frontend of the classes available
+    data= [
+        {'name':'cs223'},
+        {'name':'cs323'}
+      ]
+    return jsonify(data)
 
 @app.route('/page2')
 def page2():
