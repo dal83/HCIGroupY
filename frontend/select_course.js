@@ -5,7 +5,7 @@ const host = "cpsc484-01.stdusr.yale.internal:8888";
 let course_1_demand = 0;
 let course_2_demand = 0;
 
-let chosen_course = "aaa";
+let chosen_course = "";
 
 // Function to initialize WebSocket connections and start listening for messages
 $(document).ready(function () {
@@ -52,7 +52,7 @@ const frames = {
                 }
                 // Return to home page if no choice selected (i.e. no motion detected on either side of screen)
                 else {
-                        that.redirectToPage2();
+                    that.redirectToPage2();
 
                     // window.location.href = "index.html";
                 }
