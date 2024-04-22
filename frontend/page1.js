@@ -2,6 +2,13 @@ $(document).ready(function () {
   // the document.ready runs when the page is loaded
   //the courses container
   let container = $("#container");
+
+  var leftRectangleText = "Left Rectangle Text"; // **NEED TO SET VALUE OF LEFT RECTANGLE HERE**
+  var rightRectangleText = "Right Rectangle Text"; // **NEED TO SET VALUE OF RIGHT RECTANGLE HERE**
+
+  document.getElementById('leftRectangle').innerText = leftRectangleText;
+  document.getElementById('rightRectangle').innerText = rightRectangleText;
+
   //fetch the classes from the backend
   axios
     .get("http://localhost:5000/page1")
@@ -14,14 +21,14 @@ $(document).ready(function () {
       // Update UI with received data (example)
       console.log(response.data)
       console.log(response)
-      for (const {name} of response.data) {
-     
+      for (const { name } of response.data) {
+
         const course = $("<div>")
           .text(name)
           .addClass("course")
           .css("background-color", `${courses_colors[index]}`);
-  
-          container.append(course)
+
+        container.append(course)
         index += 1;
       }
     })
