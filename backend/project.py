@@ -1,7 +1,7 @@
 from flask import Flask, render_template, url_for,jsonify,request
 from flask_cors import CORS 
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='../frontend', static_folder='../frontend')
 CORS(app)
 
 @app.route('/')
@@ -48,4 +48,4 @@ def page4():
     return render_template('page4.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,port=5001)

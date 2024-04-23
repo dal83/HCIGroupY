@@ -4,4 +4,4 @@ CREATE TABLE data (
     constant VARCHAR(255)
 );
 
-INSERT INTO data (oh_id, queue, constant) VALUES ('id123', 10, 'fixed_value');
+INSERT INTO data (oh_id, queue, constant) VALUES ('cs223', 10, '5.4');

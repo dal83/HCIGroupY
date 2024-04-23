@@ -5,7 +5,7 @@ $(document).ready(function () {
 
 
   axios
-    .get(`http://127.0.0.1:5000/page2?course=${chosen_course}`)
+    .get(`http://localhost:5001/page2?course=${chosen_course}`)
     .then((response) => {
       course = response.data;
       //   data in the form of {'oh_id':course_name,'queue':0, 'constant':0}

@@ -7,24 +7,28 @@ let course_2_demand = 0;
 
 // Function to initialize WebSocket connections and start listening for messages
 $(document).ready(function () {
+  // axios
+  //   .get("http://localhost:5001/")
+  //   .then((response) => {
+  //     // Handle successful response
+  //     console.log("Received data:", response.data);
+  //       sessionStorage.setItem('oh_info',response.data)
 
-      axios
-        .get("http://localhost:5001/")
-        .then((response) => {
-          // Handle successful response
-          console.log("Received data:", response.data);
-            sessionStorage.setItem('oh_info',response.data)
+  //   })
+  //   .catch((error) => {
+  //     // Handle error
+  //     console.error("Error fetching data:", error);
+  //   });
 
-        })
-        .catch((error) => {
-          // Handle error
-          console.error("Error fetching data:", error);
-        });
+  let data = [
+    { oh_id: "cs223", queue: "10", constant: "2.4" },
+    { oh_id: "cs323", queue: "5", constant: "3.4" },
+  ];
+
+  sessionStorage.setItem("data",JSON.stringify(data));
   // Initialize WebSocket connections
   frames.init();
   twod.init();
-
-  
 });
 
 // Object for handling frame information
