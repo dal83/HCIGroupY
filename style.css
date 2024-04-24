@@ -122,6 +122,7 @@ body {
 .selected-course-header,
 .course-info {
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .waiting-time {
@@ -129,7 +130,6 @@ body {
 }
 
 .selected-course-header,
-.course-info,
 .waiting-time,
 .return-instruction {
   width: 80%;
@@ -193,5 +193,9 @@ body {
 }
 
 .selection-container {
-  justify-content: flex-start;  /* Aligns items to the start of the flex container, giving more control over spacing */
+  justify-content: flex-start;  
+}
+
+span {
+  margin: 8px;
 }
