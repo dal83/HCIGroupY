@@ -20,6 +20,8 @@ We have encountered problems with pipenv that we weren't able to resolve even wi
 
 ## Constraints
 
+1. Due to the backend deployment issue, our project can not show real-time data but this can be in the future solved with backend database support or remote connection to backend server
+
 ##  Collaboration Record
 
 Bowen Duanmu: Write up base frontend pages, help solve display issues and write up README.md file
