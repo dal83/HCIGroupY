@@ -21,8 +21,10 @@ $(document).ready(function () {
   //   });
 
   let data = [
-    { oh_id: "cs223", queue: "10", constant: "2.4" },
-    { oh_id: "cs323", queue: "5", constant: "3.4" },
+    { oh_id: "cs223", respondents: "10", time: "47" },
+    { oh_id: "cs201", respondents: "12", time: "23" },
+    {oh_id: "cs323", respondents: "14", time: "82" },
+    {oh_id:"cs484", respondents: "11", time: "8" }
   ];
 
   sessionStorage.setItem("data",JSON.stringify(data));

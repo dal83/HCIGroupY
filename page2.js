@@ -31,13 +31,13 @@ $(document).ready(function () {
       header.text(`You have selected ${course_name}`);
 
       let students_el = $("#students");
-      let queue = data["queue"];
+      let queue = data["respondents"];
 
       students_el.text(queue);
 
       let waiting_el = $("#waiting");
-      let constant = data["constant"];
-      let waiting = Number(queue) * Number(constant);
+      let time = data["time"];
+      let waiting = Number(time);
       waiting_el.text(`${waiting} minutes.`);
     }
   }

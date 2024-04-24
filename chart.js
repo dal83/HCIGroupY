@@ -3,8 +3,8 @@ const data = {
   labels: ["CPSC 223", "CPSC 201", "CPSC 323", "CPSC 484"],
   datasets: [
     {
-      label: "Number of Students",
-      data: [18, 15, 9, 5],
+      label: "Average reported waiting time (minutes)",
+      data: [47, 23, 82, 8],
       backgroundColor: [
         "rgba(255, 99, 132, 0.2)",
         "rgba(54, 162, 235, 0.2)",

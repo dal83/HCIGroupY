@@ -19,7 +19,7 @@ $(document).ready(function () {
       let students_el = $("#students");
       let queue = course["queue"];
     
-      students_el.text(queue);
+      students_el.text(10);
 
       let waiting_el = $("#waiting");
       let constant = course["constant"];
