@@ -120,6 +120,15 @@ body {
 }
 
 .selected-course-header,
+.course-info {
+  margin-bottom: 20px;
+}
+
+.waiting-time {
+  margin-top: 30px;
+}
+
+.selected-course-header,
 .course-info,
 .waiting-time,
 .return-instruction {
@@ -181,4 +190,8 @@ body {
   background-color: blue;
   right: 0;
   bottom: 0;
+}
+
+.selection-container {
+  justify-content: flex-start;  /* Aligns items to the start of the flex container, giving more control over spacing */
 }
