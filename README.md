@@ -21,10 +21,12 @@ We have encountered problems with pipenv that we weren't able to resolve even wi
 ## Constraints
 
 1. The user should stand within 2 feet to activate the program
-2. Due to the backend deployment issue, our project can not show real-time data but this can be in the future solved with backend database support or remote connection to backend server
+2. Due to the backend deployment issue with the TV server( it couldn't install our dependencies and spin up the flask server), our project can not show real-time data. We tried solving this with the TA's and they recognized it was more of the TV server management issue that our own. Therefore, we had to look for an alternative approach of storing and updating data in the browser.
+
+but this can be in the future solved with backend database support or remote connection to backend server
 
 ##  Collaboration Record
 
 Bowen Duanmu: Write up base frontend pages, help solve display issues and write up README.md file
-Ron Pile: Created Browser Cache alternative for the database. Helped troubleshoot server issues when the TV couldn't install our pipenv environment.
+Ron Pile: Created Browser Cache alternative to mimic a database. Helped troubleshoot server issues when the TV couldn't install our pipenv environment.
 
