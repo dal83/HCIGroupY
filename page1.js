@@ -1,8 +1,6 @@
+let countdown = 5; // Initial value
+
 $(document).ready(function () {
-
-
-
-
   // the document.ready runs when the page is loaded
   //the courses container
   let container = $("#container");
