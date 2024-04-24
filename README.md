@@ -10,7 +10,9 @@ Our problem space pertains to the structure of office hours at Yale, specificall
 
 ### Task
 1.Be provided with real time information about the waiting times at office hours (not available due to backend server deployment issue)
+
 2.Receive an estimate on how long it will take for the ULA to get to their spot in the queue
+
 3.Identify sessions with low ULA to student ratio so that more ULA’s can be scheduled for those sessions
 
 ## Project Dependency
@@ -19,3 +21,5 @@ We have encountered problems with pipenv that we weren't able to resolve even wi
 ## Constraints
 
 ##  Collaboration Record
+
+Bowen Duanmu: Write up base frontend pages, help solve display issues and write up README.md file
