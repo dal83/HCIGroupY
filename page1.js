@@ -7,12 +7,6 @@ $(document).ready(function () {
   //the courses container
   let container = $("#container");
 
-  // var leftRectangleText = "Left Rectangle Text"; // **NEED TO SET VALUE OF LEFT RECTANGLE HERE**
-  // var rightRectangleText = "Right Rectangle Text"; // **NEED TO SET VALUE OF RIGHT RECTANGLE HERE**
-
-  // document.getElementById('leftRectangle').innerText = leftRectangleText;
-  // document.getElementById('rightRectangle').innerText = rightRectangleText;
-  //   });
     let response = JSON.parse(sessionStorage.getItem('data'))
     console.log('data is ',response)
 

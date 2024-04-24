@@ -3,16 +3,6 @@ $(document).ready(function () {
 
   let chosen_course = searchParams.get("course");
 
-
-
-  // axios
-  //   .get(`http://localhost:5001/page2?course=${chosen_course}`)
-  //   .then((response) => {
-
-  //   })
-  //   .catch((error) => {
-  //     console.error(`Error from fetch`, error);
-  //   });
   let response = JSON.parse(sessionStorage.getItem("data"));
 
   console.log(response);

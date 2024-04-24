@@ -25,3 +25,5 @@ We have encountered problems with pipenv that we weren't able to resolve even wi
 ##  Collaboration Record
 
 Bowen Duanmu: Write up base frontend pages, help solve display issues and write up README.md file
+Ron Pile: Created Browser Cache alternative for the database. Helped troubleshoot server issues when the TV couldn't install our pipenv environment.
+

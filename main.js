@@ -7,18 +7,6 @@ let course_2_demand = 0;
 
 // Function to initialize WebSocket connections and start listening for messages
 $(document).ready(function () {
-  // axios
-  //   .get("http://localhost:5001/")
-  //   .then((response) => {
-  //     // Handle successful response
-  //     console.log("Received data:", response.data);
-  //       sessionStorage.setItem('oh_info',response.data)
-
-  //   })
-  //   .catch((error) => {
-  //     // Handle error
-  //     console.error("Error fetching data:", error);
-  //   });
 
   let data = [
     { oh_id: "cs223", respondents: "10", time: "47" },
