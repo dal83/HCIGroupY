@@ -2,9 +2,9 @@
 // Function to initialize WebSocket connections and start listening for messages
 $(document).ready(function () {
 
-    // Initialize WebSocket connections
-    frames.init();
-    twod.init();
+  // Initialize WebSocket connections
+  frames.init();
+  twod.init();
 
 });
 
@@ -44,25 +44,32 @@ const frames = {
         if (frame.people[0]) {
           // Determine if the person is on the left or right side of the screen
           const userPos = frame.people[0]["x_pos"];
-          if (userPos < 0) {
-            console.log("Person is on the LEFT side of the screen.");
+          console.log("user pos: " + userPos);
+          if (userPos >= -1 && userPos < -0.5) {
             course_1_demand++;
-            // console.log(data, data[0]);
+            console.log(userPos);
 
             chosen_course = data[0]["oh_id"];
-            console.log('Chosen course',chosen_course);
+            console.log('Chosen course', chosen_course);
 
             // will later use real data from backend to set the selection state
             //  sessionStorage.setItem("selection", {'oh_id':chosen_course,'queue':20, 'constant':3});
-            that.redirectToPage2(chosen_course);
-          } else {
-            console.log("Person is on the RIGHT side of the screen.");
-            course_2_demand++;
+            //that.redirectToPage2(chosen_course);
+          } else if (userPos >= -0.5 && userPos < 0) {
             chosen_course = data[1]["oh_id"];
-            console.log('Chosen course',chosen_course);
+            console.log('Chosen course', chosen_course);
+          } else if (userPos > 0 && userPos < 0.45) {
+            chosen_course = data[2]["oh_id"];
+            console.log('Chosen course', chosen_course);
 
-            that.redirectToPage2(chosen_course);
+          } else {
+            course_2_demand++;
+            chosen_course = data[3]["oh_id"];
+            console.log('Chosen course', chosen_course);
+
+            //that.redirectToPage2(chosen_course);
           }
+          that.redirectToPage2(chosen_course);
         }
         // Return to home page if no choice selected (i.e. no motion detected on either side of screen)
         else {
@@ -70,8 +77,8 @@ const frames = {
 
           window.location.href = "index.html";
         }
-        console.log("Course 1 demand:", course_1_demand);
-        console.log("Course 2 demand:", course_2_demand);
+        //console.log("Course 1 demand:", course_1_demand);
+        //console.log("Course 2 demand:", course_2_demand);
         // Stop running after processing the message
       };
     }, 5000); // Delay execution for 5 seconds
