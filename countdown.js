@@ -1,4 +1,3 @@
-let countdown = 5; // Initial value
 setInterval(function () {
   countdown--; // Decrement the value
   if (countdown >= 0) {
