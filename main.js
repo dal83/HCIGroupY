@@ -23,11 +23,11 @@ $(document).ready(function () {
   let data = [
     { oh_id: "cs223", respondents: "10", time: "47" },
     { oh_id: "cs201", respondents: "12", time: "23" },
-    {oh_id: "cs323", respondents: "14", time: "82" },
-    {oh_id:"cs484", respondents: "11", time: "8" }
+    { oh_id: "cs323", respondents: "14", time: "82" },
+    { oh_id: "cs484", respondents: "11", time: "8" }
   ];
 
-  sessionStorage.setItem("data",JSON.stringify(data));
+  sessionStorage.setItem("data", JSON.stringify(data));
   // Initialize WebSocket connections
   frames.init();
   twod.init();
@@ -49,18 +49,20 @@ const frames = {
     this.socket.onmessage = function (event) {
       frame = JSON.parse(event.data);
 
-      console.log(frame.people);
-      if (frame.people[0]) {
-        // Determine if the person is on the left or right side of the screen
-        window.location.href = "page1.html";
-        this.socket.stop();
+      if (frame.people.length >= 1) {
+        if (frame.people[0]["joints"][2]["position"]['z'] < 1200 || frame.people[0]["joints"][26]["position"]['z'] < 1200) {
+          if (frame.people[0]) {
+            // Determine if the person is on the left or right side of the screen
+            setTimeout(() => {
+              window.location.href = "page1.html";
+              this.socket.stop();
+            }, 2500);
+          }
+        }
       }
     };
 
-    setTimeout(() => {
-      window.location.href = "page1.html";
-      this.socket.stop();
-    }, 10000);
+
   },
 
   // Stop running WebSocket connection
@@ -88,3 +90,4 @@ const twod = {
     $("img.twod").attr("src", "data:image/pnjpegg;base64," + twod.src);
   },
 };
+
