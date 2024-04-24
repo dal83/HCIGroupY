@@ -21,14 +21,22 @@ $(document).ready(function () {
       let students_el = $("#students");
       let queue = data["respondents"];
       students_el.text(`${Number(queue)}`);
+      data['respondents']= (Number(data['respondents'])+1).toString()
+
+
 
       let waiting_el = $("#waiting");
-      let time = data["time"];
+      let constant = data["constant"];
+      let time = constant * Number(queue)
       let waiting = Number(time);
       waiting_el.text(`${waiting} minutes.`);
     }
   }
 
+  console.log('Data count of '+chosen_course+' updated.', courses)
+  // updating the new data
+
+  sessionStorage.setItem('data',JSON.stringify(courses))
   // Redirect to index.html after 5 seconds
   setTimeout(() => {
     window.location.href = "index.html";

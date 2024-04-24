@@ -7,15 +7,32 @@ let course_2_demand = 0;
 
 // Function to initialize WebSocket connections and start listening for messages
 $(document).ready(function () {
-
   let data = [
-    { oh_id: "cs223", respondents: "10", time: "47" },
-    { oh_id: "cs201", respondents: "12", time: "23" },
-    { oh_id: "cs323", respondents: "14", time: "82" },
-    { oh_id: "cs484", respondents: "11", time: "8" }
+    { oh_id: "cs223", respondents: "10", constant: "11", },
+    { oh_id: "cs201", respondents: "12", constant: "8" ,},
+    { oh_id: "cs323", respondents: "14", constant: "10" ,},
+    { oh_id: "cs484", respondents: "11", constant: "8" ,},
   ];
 
-  sessionStorage.setItem("data", JSON.stringify(data));
+
+
+
+
+
+
+  let oldData = sessionStorage.getItem("data");
+  // see if there's no exisitng data, and update it
+  if (!oldData) {
+    sessionStorage.setItem("data", JSON.stringify(data));
+    dipslayCharts(data)
+  }
+  else{
+
+    let updatedData= JSON.parse(oldData)
+    dipslayCharts(updatedData)
+  }
+
+  // sessionStorage.getItem
   // Initialize WebSocket connections
   frames.init();
   twod.init();
@@ -38,7 +55,10 @@ const frames = {
       frame = JSON.parse(event.data);
 
       if (frame.people.length >= 1) {
-        if (frame.people[0]["joints"][2]["position"]['z'] < 1200 || frame.people[0]["joints"][26]["position"]['z'] < 1200) {
+        if (
+          frame.people[0]["joints"][2]["position"]["z"] < 1200 ||
+          frame.people[0]["joints"][26]["position"]["z"] < 1200
+        ) {
           if (frame.people[0]) {
             // Determine if the person is on the left or right side of the screen
             setTimeout(() => {
@@ -49,8 +69,6 @@ const frames = {
         }
       }
     };
-
-
   },
 
   // Stop running WebSocket connection
@@ -79,3 +97,75 @@ const twod = {
   },
 };
 
+
+
+function dipslayCharts(data){
+  let myChartArray= data.map((oh) => {
+    return oh['respondents']
+  })
+const chartData = {
+  //will get data from backend after
+  labels: ["CPSC 223", "CPSC 201", "CPSC 323", "CPSC 484"],
+  datasets: [
+    {
+      label: "Students Registered for this Office Hour",
+      data: myChartArray,
+      backgroundColor: [
+        "rgba(255, 99, 132, 0.2)",
+        "rgba(54, 162, 235, 0.2)",
+        "rgba(255, 206, 86, 0.2)",
+        "rgba(75, 192, 192, 0.2)",
+      ],
+      borderColor: [
+        "rgba(255,99,132,1)",
+        "rgba(54, 162, 235, 1)",
+        "rgba(255, 206, 86, 1)",
+        "rgba(75, 192, 192, 1)",
+      ],
+      borderWidth: 1,
+    },
+  ],
+};
+
+const ctx = document.getElementById("myChart").getContext("2d");
+const myChart = new Chart(ctx, {
+  type: "bar",
+  data: chartData,
+  options: {
+    maintainAspectRatio: true,
+    responsive: true,
+    scales: {
+      x: {
+        ticks: {
+          font: {
+            size: 36,
+          },
+        },
+      },
+      y: {
+        ticks: {
+          font: {
+            size: 36,
+          },
+          precision: 0,
+        },
+      },
+    },
+    plugins: {
+      legend: {
+        display: false,
+      },
+      tooltip: {
+        enabled: true,
+        bodyFont: {
+          size: 44,
+        },
+        titleFont: {
+          size: 36,
+        },
+      },
+    },
+  },
+});
+
+}
