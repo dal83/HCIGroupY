@@ -33,7 +33,7 @@ $(document).ready(function () {
       let students_el = $("#students");
       let queue = data["respondents"];
 
-      students_el.text(queue);
+      students_el.text(`${Number(queue)}`);
 
       let waiting_el = $("#waiting");
       let time = data["time"];
