@@ -148,6 +148,12 @@ body {
 }
 
 .time-estimate {
+  font-weight: bold;
+  font-size: 50px;
+}
+
+.time-estimate-margined {
+  font-weight: bold;
   font-size: 50px;
   margin: 8px;
 }
